@@ -39,10 +39,10 @@ my_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K
 browser = webdriver.Chrome(r'C:\Users\solex\Desktop\tradebot\chromedriver.exe',
                            chrome_options=options
                            )
-url = 'https://2ip.ru/'
+url = 'https://www.mirea.ru/'
 try:
     browser.get(url=url)
-    time.sleep(5)
+    button = browser.find_element_by_class_name('uk-button uk-button-primary"')
 except Exception as ex:
     print(ex)
 finally:

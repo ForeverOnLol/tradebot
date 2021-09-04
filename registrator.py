@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 
 # Это тестик для проверки моих сил
 # Словарь прокси
-from configs import mypassword, mytelephone
+
 
 proxy_options = {
     'proxy': {
@@ -22,25 +22,33 @@ my_user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K
 options = webdriver.ChromeOptions()
 options.add_argument(f'user-agent={my_user_agent}')
 
-browser = webdriver.Chrome(r'C:\Users\solex\Desktop\tradebot\chromedriver.exe',
+browser = webdriver.Chrome(executable_path=r'C:\Users\solex\Desktop\tradebot\chromedriver.exe',
                            chrome_options=options
                            )
-url = 'https://vk.com/'
+url = 'https://www.mirea.ru/'
 try:
     browser.get(url=url)
-    time.sleep(5)
-    email_input = browser.find_element_by_id('index_email')
-    email_input.clear()
-    passoword_input = browser.find_element_by_id('index_pass')
-    email_input.clear()
-    email_input.send_keys(mytelephone)
     time.sleep(3)
-    passoword_input.clear()
-    passoword_input.send_keys(mypassword)
+    browser.get(url = 'mail.ru')
     time.sleep(5)
-    passoword_input.send_keys(Keys.ENTER)
+    button = browser.find_element_by_class_name('uk-button').click()
+    #button = browser.find_element_by_css_selector('.uk-button.uk-button-primary').click()
+    time.sleep(5)
+    button_to_student = browser.find_element_by_css_selector('.uk-button.uk-button-primary.uk-width-1-1.uk-button-large')
+    button_to_student.click()
+    time.sleep(5)
+    #email_input = browser.find_element_by_id('index_email')
+    #email_input.clear()
+    #passoword_input = browser.find_element_by_id('index_pass')
+    #email_input.clear()
+    #email_input.send_keys(mytelephone)
+
+    #passoword_input.clear()
+    #passoword_input.send_keys(mypassword)
+
+    #passoword_input.send_keys(Keys.ENTER)
     #button_login = browser.find_element_by_id('index_login_button').click()
-    time.sleep(20)
+
 except Exception as ex:
     print(ex)
 finally:
