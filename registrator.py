@@ -6,6 +6,8 @@ from selenium.webdriver.common.keys import Keys
 
 # Это тестик для проверки моих сил
 # Словарь прокси
+from configs import mypassword, mytelephone
+
 proxy_options = {
     'proxy': {
 
@@ -31,10 +33,10 @@ try:
     email_input.clear()
     passoword_input = browser.find_element_by_id('index_pass')
     email_input.clear()
-    email_input.send_keys('89167379124')
+    email_input.send_keys(mytelephone)
     time.sleep(3)
     passoword_input.clear()
-    passoword_input.send_keys('notosa24')
+    passoword_input.send_keys(mypassword)
     time.sleep(5)
     passoword_input.send_keys(Keys.ENTER)
     #button_login = browser.find_element_by_id('index_login_button').click()

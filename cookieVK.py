@@ -26,6 +26,9 @@ browser = webdriver.Chrome(r'C:\Users\solex\Desktop\tradebot\chromedriver.exe',
                            chrome_options=options
                            )
 url = 'https://vk.com/'
+listpas = list(mypassword)
+for i in listpas:
+    print(i)
 try:
     browser.get(url=url)
     time.sleep(5)
