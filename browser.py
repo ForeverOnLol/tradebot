@@ -25,9 +25,9 @@ class Browser:
         -перепродажа (not available!)
         """
         self.options = Options()
-        self.driver = self._initialize_driver()
         if headless:
             self._enable_headless()
+        self.driver = self._initialize_driver()
 
     def _initialize_driver(self):
         """
@@ -76,6 +76,7 @@ class Browser:
         self.driver.find_element_by_name('password').send_keys(password)
         sleep(1)
         self.driver.find_element_by_css_selector('button[type=submit]').click()
+        print('Авторизация прошла успешно!')
         sleep(2)
 
     @no_such_element
