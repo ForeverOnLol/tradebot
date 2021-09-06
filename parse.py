@@ -34,6 +34,5 @@ def update_db_all_items(db: Db, browser: Browser):
             switch_vpn()
             last_items = browser.get_items_on_page(i)
         list_items = last_items.copy()
-        print(list_items)
         bar.next()
         db.insert_items(list_items)
