@@ -37,7 +37,6 @@ class Browser:
         ошибок JavaScript. Возвращается экземпляр объекта Webdriver с нужными настройками.
         """
         settings = parse_settings()
-        vpn_func.start_vpn()
         dc = DesiredCapabilities.CHROME
         dc['goog:loggingPrefs'] = {'browser': 'ALL'}
 
@@ -95,7 +94,7 @@ class Browser:
         Получение списка кортежей с информацией о предметах на конкретной странице торговой площадки.
         В каждом кортеже лежит информация о элементе: appid и hash_name.
         """
-        link = f'https://steamcommunity.com/market/search?q=#p{page_num}_popular_desc'
+        link = f'https://steamcommunity.com/market/search?appid=730#p{page_num}_popular_desc'
         self.driver.get(link)
         sleep(3)
         self.driver.implicitly_wait(5)
@@ -114,4 +113,8 @@ class Browser:
 
     def get_max_page(self):
         buttons = self.driver.find_elements_by_css_selector('.market_paging_pagelink')
-        return int(buttons[len(buttons) - 1].get_attribute('innerText'))
+        return int(buttons[-1].get_attribute('innerText'))
+
+    def get_price_text(self):
+        return self.driver.find_element_by_tag_name('pre').text
+
